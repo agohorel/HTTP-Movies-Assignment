@@ -31,11 +31,11 @@ const App = () => {
             );
           }}
         />
-        <Route exact path="/update-movie/:id">
+        <Route path="/update-movie/:id">
           <EditMovie movieToEdit={movieToEdit}></EditMovie>
         </Route>
 
-        <Route exact path="/add-movie">
+        <Route path="/add-movie">
           <AddMovie></AddMovie>
         </Route>
       </Router>
