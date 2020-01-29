@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-export const EditMovie = ({ movieToEdit }) => {
-  const id = useParams().id;
+export const AddMovie = () => {
   const history = useHistory();
 
   const [formData, setFormData] = useState({
-    title: movieToEdit.title,
-    director: movieToEdit.director,
-    metascore: movieToEdit.metascore,
-    actors: movieToEdit.stars
+    title: "",
+    director: "",
+    metascore: "",
+    actors: ""
   });
 
   const handleChange = e => {
@@ -19,26 +18,15 @@ export const EditMovie = ({ movieToEdit }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    let stars;
-
-    if (formData.actors instanceof Array) {
-      stars = formData.actors;
-    } else {
-      stars = formData.actors.split(",");
-    }
 
     const payload = {
       ...formData,
-      id,
-      stars
+      stars: formData.actors.split(",")
     };
 
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/movies/${id}`,
-        payload
-      );
-      history.push("/");
+      const res = await axios.post("http://localhost:5000/api/movies", payload);
+      history.push(`/movies/${res.data.length - 1}`);
     } catch (err) {
       console.error(err);
     }
@@ -75,7 +63,7 @@ export const EditMovie = ({ movieToEdit }) => {
           onChange={handleChange}
           value={formData.actors}
         />
-        <button>update</button>
+        <button>add movie</button>
       </form>
     </div>
   );
