@@ -16,8 +16,8 @@ const App = () => {
 
   return (
     <>
-      <SavedList list={savedList} />
       <Router>
+        <SavedList list={savedList} />
         <Route exact path="/" component={MovieList} />
         <Route
           path="/movies/:id"
@@ -35,7 +35,7 @@ const App = () => {
           <EditMovie movieToEdit={movieToEdit}></EditMovie>
         </Route>
 
-        <Route path="/add-movie">
+        <Route exact path="/add-movie">
           <AddMovie></AddMovie>
         </Route>
       </Router>
