@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-export const EditMovie = () => {
+export const EditMovie = ({ movieToEdit }) => {
   const id = useParams().id;
   const history = useHistory();
 
   const [formData, setFormData] = useState({
-    title: "",
-    director: "",
-    metascore: "",
-    actors: []
+    title: movieToEdit.title,
+    director: movieToEdit.director,
+    metascore: movieToEdit.metascore,
+    actors: movieToEdit.stars
   });
 
   const handleChange = e => {
@@ -43,13 +43,33 @@ export const EditMovie = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
-        <input type="text" id="title" onChange={handleChange} />
+        <input
+          type="text"
+          id="title"
+          onChange={handleChange}
+          value={formData.title}
+        />
         <label htmlFor="director">Director</label>
-        <input type="text" id="director" onChange={handleChange} />
+        <input
+          type="text"
+          id="director"
+          onChange={handleChange}
+          value={formData.director}
+        />
         <label htmlFor="metascore">Metacritic Score</label>
-        <input type="text" id="metascore" onChange={handleChange} />
+        <input
+          type="text"
+          id="metascore"
+          onChange={handleChange}
+          value={formData.metascore}
+        />
         <label htmlFor="actors">Actors</label>
-        <input type="textarea" id="actors" onChange={handleChange} />
+        <input
+          type="textarea"
+          id="actors"
+          onChange={handleChange}
+          value={formData.actors}
+        />
         <button>update</button>
       </form>
     </div>
