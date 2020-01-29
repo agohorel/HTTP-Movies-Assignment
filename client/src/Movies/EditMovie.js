@@ -45,37 +45,49 @@ export const EditMovie = ({ movieToEdit }) => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title" className="form-label">
+          Title
+        </label>
         <input
           type="text"
           id="title"
           onChange={handleChange}
           value={formData.title}
+          className="form-input"
         />
-        <label htmlFor="director">Director</label>
+        <label htmlFor="director" className="form-label">
+          Director
+        </label>
         <input
           type="text"
           id="director"
           onChange={handleChange}
           value={formData.director}
+          className="form-input"
         />
-        <label htmlFor="metascore">Metacritic Score</label>
+        <label htmlFor="metascore" className="form-label">
+          Metacritic Score
+        </label>
         <input
           type="text"
           id="metascore"
           onChange={handleChange}
           value={formData.metascore}
+          className="form-input"
         />
-        <label htmlFor="actors">Actors</label>
+        <label htmlFor="actors" className="form-label">
+          Actors
+        </label>
         <input
           type="textarea"
           id="actors"
           onChange={handleChange}
           value={formData.actors}
+          className="form-input"
         />
-        <button>update</button>
+        <button className="button">update</button>
       </form>
     </div>
   );
