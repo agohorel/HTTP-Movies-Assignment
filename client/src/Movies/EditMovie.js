@@ -15,15 +15,22 @@ export const EditMovie = ({ movieToEdit }) => {
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
-    console.log(formData);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
+    let stars;
+
+    if (formData.actors instanceof Array) {
+      stars = formData.actors;
+    } else {
+      stars = formData.actors.split(",");
+    }
+
     const payload = {
       ...formData,
       id,
-      stars: formData.actors.split(",")
+      stars
     };
 
     try {
@@ -31,7 +38,7 @@ export const EditMovie = ({ movieToEdit }) => {
         `http://localhost:5000/api/movies/${id}`,
         payload
       );
-      console.log(res);
+      history.push("/");
     } catch (err) {
       console.error(err);
     }
