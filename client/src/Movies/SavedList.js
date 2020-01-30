@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const activeNavStyle = {
   textDecoration: "line-through",
@@ -26,7 +26,7 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div class="nav-buttons">
+        <div className="nav-buttons">
           <div className="home-button">
             <NavLink activeStyle={activeNavStyle} to="/add-movie">
               Add Movie

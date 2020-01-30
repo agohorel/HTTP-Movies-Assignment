@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
@@ -16,29 +16,27 @@ const App = () => {
 
   return (
     <>
-      <Router>
-        <SavedList list={savedList} />
-        <Route exact path="/" component={MovieList} />
-        <Route
-          path="/movies/:id"
-          render={props => {
-            return (
-              <Movie
-                {...props}
-                addToSavedList={addToSavedList}
-                setMovieToEdit={setMovieToEdit}
-              />
-            );
-          }}
-        />
-        <Route path="/update-movie/:id">
-          <EditMovie movieToEdit={movieToEdit}></EditMovie>
-        </Route>
+      <SavedList list={savedList} />
+      <Route exact path="/" component={MovieList} />
+      <Route
+        path="/movies/:id"
+        render={props => {
+          return (
+            <Movie
+              {...props}
+              addToSavedList={addToSavedList}
+              setMovieToEdit={setMovieToEdit}
+            />
+          );
+        }}
+      />
+      <Route path="/update-movie/:id">
+        <EditMovie movieToEdit={movieToEdit}></EditMovie>
+      </Route>
 
-        <Route path="/add-movie">
-          <AddMovie></AddMovie>
-        </Route>
-      </Router>
+      <Route path="/add-movie">
+        <AddMovie></AddMovie>
+      </Route>
     </>
   );
 };

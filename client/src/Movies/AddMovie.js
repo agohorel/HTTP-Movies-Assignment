@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const AddMovie = () => {
   const history = useHistory();

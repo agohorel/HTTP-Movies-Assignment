@@ -21,9 +21,11 @@ export const EditMovie = ({ movieToEdit }) => {
     e.preventDefault();
     let stars;
 
+    // this handles when you don't update the actors
     if (formData.actors instanceof Array) {
       stars = formData.actors;
     } else {
+      // this handles when you do
       stars = formData.actors.split(",");
     }
 
@@ -34,10 +36,7 @@ export const EditMovie = ({ movieToEdit }) => {
     };
 
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/movies/${id}`,
-        payload
-      );
+      await axios.put(`http://localhost:5000/api/movies/${id}`, payload);
       history.push("/");
     } catch (err) {
       console.error(err);
