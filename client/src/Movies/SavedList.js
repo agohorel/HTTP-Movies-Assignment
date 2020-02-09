@@ -1,5 +1,11 @@
-import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+
+const activeNavStyle = {
+  textDecoration: "line-through",
+  backgroundColor: "#21934c"
+};
+
 export default class SavedList extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +26,17 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div className="home-button">
-          <Link to="/">Home</Link>
+        <div className="nav-buttons">
+          <div className="home-button">
+            <NavLink activeStyle={activeNavStyle} to="/add-movie">
+              Add Movie
+            </NavLink>
+          </div>
+          <div className="home-button">
+            <NavLink activeStyle={activeNavStyle} exact to="/">
+              Home
+            </NavLink>
+          </div>
         </div>
       </div>
     );
